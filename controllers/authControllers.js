@@ -44,9 +44,6 @@ const sign_up = async(req,res)=>{
 }
 
 module.exports = {
-    render_login,
-    render_register,
     sign_in,
     sign_up,
-    logout
 }

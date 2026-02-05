@@ -14,8 +14,6 @@ const {checkUser} = require("./middleware/jwtAuth.js")
 
 const {search}= require("./middleware/search.js")
 
-const home = require("./routes/home.js");
-
 const gameRoute = require("./routes/game.js");
 
 const animeRoute = require("./routes/anime.js");
@@ -40,14 +38,11 @@ app.use("/home/anime", animeRoute);
 
 app.use("/home/game", gameRoute);
 
-app.use(home);
-
-
 
 app.use(authRoute)
 
 app.use((req, res) =>{
-    res.status(404).render("404", {name: "Page Not Found"});
+    res.status(404).json({Path: "Api adress not found"});
 });
 
 

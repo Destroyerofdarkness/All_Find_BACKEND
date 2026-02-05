@@ -39,6 +39,5 @@ const anime_page_delete = async (req, res) => {
 
 module.exports = {
   anime_make,
-  register_anime_page,
   anime_page_delete,
 };

@@ -55,7 +55,6 @@ const update_content = async (req, res) => {
 };
 
 module.exports = {
-  register_game,
   game_delete,
   registrer_game_post,
   update_content,
