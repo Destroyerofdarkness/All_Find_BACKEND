@@ -12,22 +12,6 @@ const createJWT = (id)=>{
     })
 }
 
-const render_login = (req,res )=>{
-    try{
-        res.render("auth/login",{name:"Login"})
-    }catch(err){
-        res.status(500).send(err)
-    }
-}
-
-const render_register = (req,res)=>{
-    try{
-        res.render("auth/register", {name:"Register"})
-    }catch{
-        res.status(500).send(err)
-    }
-}
-
 const sign_in = async(req,res)=>{
     const {user,pass} = req.body
     try{
@@ -57,15 +41,6 @@ const sign_up = async(req,res)=>{
        console.log(error)
        res.status(301).json({error})
     }
-}
-
-const logout= (req,res) =>{
-try{
-    res.cookie("jwt", "", {maxAge: 10})
-    res.redirect("/login")
-}catch(err){
- res.status(500).send(err)
-}
 }
 
 module.exports = {

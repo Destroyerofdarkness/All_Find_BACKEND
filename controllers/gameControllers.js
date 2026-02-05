@@ -1,6 +1,5 @@
 const games = require("../models/Games");
 const {handleGameError} = require("../handlers/errorHandler.js");
-const { json } = require("express");
 const handleError = handleGameError
 
 //Register game and go to the page

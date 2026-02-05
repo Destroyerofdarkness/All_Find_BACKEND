@@ -2,11 +2,6 @@ const games = require("../models/Games")
 const animes = require("../models/anime")
 const User = require("../models/User.js")
 const {findContent, findUsersCreations}= require("../handlers/modelHandlers.js")
-const home_get = async (req,res) =>{
-    const game = await games.find() 
-    const anime = await animes.find()
-    res.render("index", {name: "Home", game , anime})
-}
 
 const find_result = async(req,res)=>{
     const id = req.params.id
@@ -20,9 +15,6 @@ const find_result = async(req,res)=>{
     }
 }
 
-const home_redirect = (req,res) =>{
-    res.redirect("/home")
-}
 
 const render_profile = async(req,res, next)=>{
     const username = req.params.name

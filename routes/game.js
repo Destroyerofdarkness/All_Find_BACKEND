@@ -4,8 +4,6 @@ const gameRoute = require("../controllers/gameControllers")
 
 const {authenticate} = require("../middleware/jwtAuth")
 
-router.get("/register",authenticate, gameRoute.register_game )
-
 router.post("/register", gameRoute.registrer_game_post)
 
 

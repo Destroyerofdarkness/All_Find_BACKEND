@@ -2,9 +2,6 @@ const anime = require("../models/anime");
 
 const {handleAnimeError} = require("../handlers/errorHandler.js")
 const handleError = handleAnimeError
-const register_anime_page = (req, res) => {
-  res.render("anime/registerAni", { name: "Register Anime" });
-};
 
 const anime_make = async (req, res) => {
   const { link, name, episodes, description, user } = req.body;
