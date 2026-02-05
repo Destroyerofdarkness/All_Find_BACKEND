@@ -1,0 +1,66 @@
+#register{
+    width: 20vw;
+    align-self: center;
+    align-content: center;
+    height: fit-content;
+    background-color:var(--jetBlack) ;
+    margin: 2vw;
+    display: flex;
+    border-radius: 0.6vw;
+    flex-direction: column;
+    padding: 10vh;
+    box-shadow: 0 0 0.7vw var(--shadow);
+}
+body h1{
+    margin-top: 2vw;
+    align-self: center;
+    text-align: center;
+    color: var(--text);
+    font-family: var(--katibeh);
+    font-weight: 200;
+    font-size: 3vw;
+}
+#register button{
+    margin-top:1vw ;
+}
+.regInput{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3vw;
+}
+.regInput input, .regInput textarea, #register button{
+    font-family: var(--kameron);
+    border-radius: 0.4vw;
+     width: 20vw;
+    padding: 0.3vw;
+    font-size: 1vw;
+    background: var(--primary);
+    box-sizing: border-box;
+    color: var(--text);
+    text-decoration: none;
+    height: 2vw;
+    border: 0;
+    box-shadow: 0 0 0.7vw var(--shadow);
+}
+.regInput label{
+color: var(--text);
+font-family: var(--katibeh);
+font-size: 2vw;
+}
+.error{
+    color: red;
+    font-family: var(--katibeh);
+    font-size: 1.3vw;
+    font-weight: 300;
+}
+#description{
+height: 10vw;
+}
+
+:root{
+  --primary: #220029;
+  --text: #A200FF;
+  --shadow: #7600BB;
+  --katibeh: "Katibeh", serif; font-weight: 300;
+  --kameron: "Kameron", serif;
+}

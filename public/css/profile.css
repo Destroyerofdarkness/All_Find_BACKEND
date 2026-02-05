@@ -1,0 +1,92 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+main {
+    align-self: center;
+  justify-content: center;
+  gap: 18vw;
+  align-content: center;
+  display: flex;
+}
+h1{
+    text-align: center;
+    font-size: 4vw;
+    font-family: var(--katibeh);
+    color: var(--text);
+    font-weight: 300;
+    margin-bottom: 10vw;
+    margin-top: 2vw;
+}
+section{
+    display: flex;
+    flex-direction: column;
+    gap: 2;
+    flex: 1;
+}
+section h2{
+    text-align: center;
+    color: var(--text);
+    font-family: var(--katibeh);
+    font-weight: 300;
+    font-size: 3vw;
+    margin: 0;
+}
+#topLine{
+    align-self: center;
+    margin: 2vw;
+    width: 20vw;
+    border: 0.15vw solid var(--shadow);
+    border-color: var(--shadow);
+    box-shadow: 0 0 1vw var(--shadow);
+    align-self: center;
+    height: auto;
+}
+
+section h3{
+    text-align: center;
+    font-size: 3vw;
+    font-family: var(--katibeh);
+    color: var(--text);
+    font-weight: 300;
+    margin: 0;
+
+}
+section a{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-decoration: none;
+}
+section a img{
+    display: flex;
+    align-self: center;
+    width: max-content;
+    height: 15vw;
+}
+section a h4{
+    text-align: center;
+    font-size: 2vw;
+    color: var(--text);
+    font-family: var(--katibeh);
+    font-weight: 300;
+}
+section hr{
+    align-self: center;
+    margin: 2vw;
+    width: 27vw;
+    border: 0.15vw solid var(--shadow);
+    border-color: var(--shadow);
+    box-shadow: 0 0 1vw var(--shadow);
+    align-self: center;
+    height: auto;
+}
+:root{
+  --primary: #220029;
+  --text: #A200FF;
+  --shadow: #7600BB;
+  --katibeh: "Katibeh", serif; font-weight: 200;
+  --kameron: "Kameron", serif;
+}

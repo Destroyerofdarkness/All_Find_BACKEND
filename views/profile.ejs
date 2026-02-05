@@ -1,0 +1,53 @@
+<%- include("./partials/head.ejs")%>
+<link rel="stylesheet" href="/css/profile.css">
+  <%- include("./partials/header.ejs")%>
+<body>
+ <h1><%= name %></h1>
+  <section>
+     
+      <h2>Creations</h2>
+      <hr id="topLine">
+    </section>
+  <main>
+
+    <% if (games.length > 0) {%>
+            <section>
+        <h3>Game</h3>
+        <hr>
+        <% console.log("Users Games loaded") %> 
+        <% games.forEach(data => { %>
+        <a href="/result/<%= data.id %>">
+
+            <img src="<%= data.link %>" alt="<%= data.Name %>" />
+            <h4><%= data.Name %></h4>
+          
+        </a>
+        <% }) %> 
+            </section>
+        <% } %>
+      
+      
+        
+        <%if (anime.length > 0){ %>
+            <section>
+        <h3>Anime</h3>
+         <hr>
+        <% anime.forEach(data =>{ %>
+        <a href="/result/<%= data.id %>">
+          
+            <img src="<%= data.link %>" alt="" />
+            <h4><%= data.Name %></h4>
+          
+        </a>
+        <% })%> 
+            </section>
+        <% } %>
+  </main>
+</body>
+    
+
+    
+
+   <%- include("./partials/footer") %>
+  </body>
+</html>

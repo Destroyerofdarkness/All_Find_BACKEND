@@ -1,0 +1,32 @@
+</head>
+<header>
+    <img id="Logo" src="/img/header_logo.png" alt="A Logo with the text AllFind with purple color">
+        <form class="searchBar" method="get" class="search">
+            <label for="searchValue">Search Results:</label>
+            <input type="text" name="searchValue" id="searchValue" placeholder="Search by name">
+            <button type="submit">Search</button>
+        </form> 
+        <div class="results">
+            <% result.forEach(data => {%>
+                <% console.log("Data:",data) %>
+                <% data.forEach(result => {%>
+                    <a href="/result/<%= result.id %>">
+                    <img src="<%= result.link  %>" alt="<%= result.Name %>">
+                    <h1><%= result.Name %></h1>
+                    </a>
+               <% }); %>
+           <% });  %>
+        </div>
+<nav>
+<a href="/home/game/register">Register  Game</a>
+<a href="/home">Home</a>
+<a href="/home/anime/register">Register Anime</a>
+<% if(user){ %>
+<a href="/profile/<%= user %>">Profile</a>
+<a href="/logout">Log out</a>
+<% }else{ %>
+<a href="/login">Sign In</a>
+<a href="/register">Sign Up</a>
+    <% } %>
+</nav>
+</header>

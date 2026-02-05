@@ -1,0 +1,38 @@
+<%- include("./partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/description.css">
+
+    <%- include("./partials/header.ejs") %>
+
+        <body>
+            <main>
+                <img src="<%= content.link %>" alt="<%= content.Name %>">
+                <h1>
+                    <%= content.Name %>
+                </h1>
+
+                <div>
+                    <% if(content.Episodes){ %>
+                        <h3> Episodes: <%= content.Episodes %>
+                        </h3>
+                        <% } %>
+                        <h3>Created By: <%= content.createdBy %></h3>
+                            <%=content.Description %>
+                </div>
+            </main>
+            <% if(user === content.createdBy) {%>
+            <% if(content.Episodes){ %>
+                <form class="delete" action="/home/anime/<%= content.id %>" method="post">
+                    <input type="hidden" name="gameid" value="<%= content.id %>">
+                    <button type="submit">Delete</button>
+                </form>
+                <% } else{%>
+                    <form class="delete" action="/home/game/<%= content.id %>" method="post">
+                        <input type="hidden" name="gameid" value="<%= content.id %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <% } %>
+                    <% } %>
+                        <%- include("./partials/footer") %>
+        </body>
+
+        </html>

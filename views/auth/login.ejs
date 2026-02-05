@@ -1,0 +1,22 @@
+<%- include("../partials/head.ejs") %>
+<script src="/script/auth/fetch_login.js"></script>
+<link rel="stylesheet" href="/css/auth.css">
+<%- include("../partials/header.ejs") %>
+<main>
+<h1>Sign In</h1>
+<form id="login">
+    <section>
+    <label for="user">Username:</label>
+    <input type="text" name="user" id="user" placeholder="Enter your username..">
+    <div class="user error"></div>
+    </section>
+    <section>
+    <label for="pass">Password:</label>
+    <input type="password" name="pass" id="pass" placeholder="Enter your password..">
+    <div class="pass error"></div>
+    </section>
+    <button type="submit">Log in</button>
+</form>
+</main>
+<%- include("../partials/footer.ejs") %>
+    

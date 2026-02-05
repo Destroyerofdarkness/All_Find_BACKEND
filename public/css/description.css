@@ -1,0 +1,66 @@
+main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+main img{
+    padding-top: 4vw;
+    display: flex;
+    width: auto;
+    height: 25vw;
+    align-self: center;
+}
+main div{
+    padding: 1vw;
+    width: 30vw;
+    font-size: 1.3vw;
+    color: var(--text);
+    font-weight: 300;
+    font-family: var(--katibeh);
+    box-shadow: 0 0 0.7vw var(--shadow);
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1vw;
+}
+main div h3{
+    margin: 0;
+    margin-bottom: 0.6vw;
+font-size: 2vw;
+color: var(--text);
+font-family: var(--katibeh);
+font-weight: 300;
+}
+main h1{
+font-weight: 300;
+font-family: var(--katibeh);
+font-size: 3vw;
+color: var(--text);
+
+}
+.delete{
+    margin: 2vw;
+    display: flex;
+    justify-content: center;
+}
+.delete button{
+    border: 0;
+    background: var(--primary);
+    box-shadow: 0 0 1vw var(--shadow);
+    border-radius: 0.6vw;
+    font-size: 1.2vw;
+    font-family: var(--kameron);
+    color: var(--text);
+    padding: 0.6vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    align-self: center;
+}
+:root{
+  --primary: #220029;
+  --text: #A200FF;
+  --shadow: #7600BB;
+  --katibeh: "Katibeh", serif; font-weight: 200;
+  --kameron: "Kameron", serif;
+}

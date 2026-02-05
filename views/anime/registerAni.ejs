@@ -1,0 +1,37 @@
+
+    <%- include("../partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/register.css">
+    <script src="/script/fetch_anime.js"></script>
+<%- include("../partials/header.ejs") %>
+<body>
+    <h1>Register Your Anime</h1>
+    <form id="register">
+        <div class="regInput">
+            <label for="link">Link</label>
+            <input type="text" name="link" id="link" placeholder="Link to IMG">
+                    <div class="link error"></div>
+        </div>
+        <div class="regInput">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="Name of the anime">
+            <div class="name error"></div>
+
+        </div>
+        <div class="regInput">
+            <label for="episodes">Episodes</label>
+            <input type="number" name="episodes" id="episodes" placeholder="Episodes">
+            <div class="episodes error"></div>
+
+        </div>
+        <div class="regInput">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description" placeholder="Description"></textarea>
+             <div class="description error"></div>
+        </div>
+        <input type="hidden" name="user" id="user" value="<%= user %>">
+       <button type="submit">Register</button>
+    </form>
+    
+    <%- include("../partials/footer") %>
+</body>
+</html>

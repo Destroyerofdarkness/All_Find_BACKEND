@@ -1,0 +1,77 @@
+body, html{
+    overflow-y: none;
+}
+main{
+    display: flex;
+    margin: 8vw;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+}
+main h1{
+    text-align: center;
+    font-family: var(--kameron);
+    font-size: 3vw;
+    color: var(--text);
+}
+#login, #register{
+display: flex;
+width: fit-content;
+justify-content: center;
+align-self: center;
+flex-direction: column;
+border-radius: 0.8vw;
+padding: 1.4vw;
+gap: 1vw;
+box-shadow: 0 0 1vw var(--shadow);
+}
+#login section label, #register section label{
+    font-size: 1.3vw;
+    margin: 0.2vw;
+    color: var(--text);
+    font-family: var(--kameron);
+}
+#login section, #register section{
+    display: flex;
+    flex-direction: column;
+}
+.error{
+    font-size: 1vw;
+    font-family: var(--kameron);
+    color: red;
+}
+#login button, #register button{
+    width: fit-content;
+    padding: 0.3vw;
+    padding-left: 1vw;
+    border: 0;
+    font-size: 1.4vw;
+    font-family: var(--kameron);
+    padding-right: 1vw;
+    align-self: center;
+    border-radius: 0.4vw;
+    background: var(--primary);
+    margin: 1vw;
+    color: var(--text);
+    box-shadow: 0 0 1vw var(--shadow);
+}
+#login section input, #register section input{
+    border: 0;
+    outline: none;
+    width: 17vw;
+    font-size: 1vw;
+    background: var(--primary);
+    box-shadow: 0 0 1vw var(--shadow);
+    font-family: var(--kameron);
+    color: var(--text);
+    padding: 0.5vw;
+    border-radius: 0.6vw;
+    height: 1.5vw;
+}
+:root{
+  --primary: #220029;
+  --text: #A200FF;
+  --shadow: #7600BB;
+  --katibeh: "Katibeh", serif; font-weight: 200;
+  --kameron: "Kameron", serif;
+}

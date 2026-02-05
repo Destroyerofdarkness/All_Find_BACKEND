@@ -1,0 +1,12 @@
+h1{
+    text-align: center;
+    color: white;
+    font-family: var(--jomhuria);
+    font-weight: 300;
+    font-size: 3vw;
+}
+:root{
+    --jomhuria: "Jomhuria", serif;
+    --primaryPink: #C6006B;
+    --jetBlack: #0A0A0A;
+}
