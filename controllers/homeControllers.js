@@ -3,6 +3,17 @@ const animes = require("../models/anime")
 const User = require("../models/User.js")
 const {findContent, findUsersCreations}= require("../handlers/modelHandlers.js")
 
+const get_all_content = async(req,res)=>{
+    try{
+        const game = await games.find()
+        const anime = await animes.find()
+        res.status(200).json({game,anime})
+    }catch(err){
+        console.log(err)
+        res.status(401).json({err})
+    }
+}
+
 const find_result = async(req,res)=>{
     const id = req.params.id
     try{
@@ -32,8 +43,7 @@ const render_profile = async(req,res, next)=>{
 
 
 module.exports = {
-    home_get,
-    home_redirect,
     find_result,
-    render_profile
+    render_profile,
+    get_all_content
 }

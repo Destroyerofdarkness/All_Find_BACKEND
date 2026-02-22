@@ -20,6 +20,8 @@ const animeRoute = require("./routes/anime.js");
 
 const authRoute = require("./routes/auth.js")
 
+const mainRoute = require("./routes/main.js")
+
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -41,8 +43,9 @@ app.use("/home/anime", animeRoute);
 
 app.use("/home/game", gameRoute);
 
-
 app.use(authRoute)
+
+app.use(mainRoute)
 
 app.use((req, res) =>{
     res.status(404).json({Path: "Api adress not found"});
