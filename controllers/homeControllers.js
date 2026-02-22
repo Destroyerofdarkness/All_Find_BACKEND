@@ -8,7 +8,7 @@ const find_result = async(req,res)=>{
     try{
         const content = await findContent(id)
         console.log("content:",content)
-        res.status(200).render("description", {content, name: content.Name })
+        res.status(200).json({content})
     }catch(err){
         console.log(err)
         res.status(500).send(err)

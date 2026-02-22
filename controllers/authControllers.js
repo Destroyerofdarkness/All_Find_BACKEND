@@ -16,10 +16,9 @@ const sign_in = async(req,res)=>{
     const {user,pass} = req.body
     try{
        const userId = await User.login(user,pass)
-       console.log(userId)
+       console.log("User ID:",userId)
        const token = createJWT(userId)
-        res.cookie("jwt", token, {httpOnly: true, maxAge: maxValidDate * 1000 })
-        res.status(200).json({userId})
+       res.status(200).json({token})
     }
     catch(err){
         const error = handleAuthError(err)
@@ -31,11 +30,9 @@ const sign_in = async(req,res)=>{
 const sign_up = async(req,res)=>{
     const {user ,pass} = req.body
     try{
-        console.log("User:", user, "Pass:",pass)
         const userId = await User.register(user,pass)
         const token = createJWT(userId)
-        res.cookie("jwt", token, {httpOnly: true, maxAge: maxValidDate *1000})
-        res.status(200).json({userId})
+        res.status(200).json({token})
     }catch(err){
        const error = handleAuthError(err)
        console.log(error)

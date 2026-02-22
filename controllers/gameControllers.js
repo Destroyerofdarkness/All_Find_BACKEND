@@ -2,11 +2,7 @@ const games = require("../models/Games");
 const {handleGameError} = require("../handlers/errorHandler.js");
 const handleError = handleGameError
 
-//Register game and go to the page
-const register_game = (req, res) => {
-  res.render("games/register", { name: "Register Game" });
-  console.log("Loaded in register page");
-};
+
 
 const registrer_game_post = async (req, res) => {
   const { link, name, description, user } = req.body;

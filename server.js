@@ -4,11 +4,11 @@ const path = require("path");
 
 const mongoose = require("mongoose");
 
-const cookieParser = require("cookie-parser")
-
 require("dotenv").config();
 
 const app = express();
+
+const cors = require("cors");
 
 const {checkUser} = require("./middleware/jwtAuth.js")
 
@@ -28,11 +28,14 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended: true}));
 
-app.use(cookieParser())
-
 app.use(search)
 
-app.use(checkUser)
+app.use(cors({
+    origin: "http://localhost:3000",
+    methods: ["GET","POST", "DELETE","PUT"],
+    allowedHeaders: ["Content-Type","Authorization"]
+}))
+
 
 app.use("/home/anime", animeRoute);
 
