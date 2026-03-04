@@ -2,8 +2,6 @@ const express = require("express")
 const router = express.Router()
 const gameRoute = require("../controllers/gameControllers")
 
-const {authenticate} = require("../middleware/jwtAuth")
-
 router.post("/register", gameRoute.registrer_game_post)
 
 
