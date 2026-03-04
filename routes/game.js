@@ -1,12 +1,11 @@
-const express = require("express")
-const router = express.Router()
-const gameRoute = require("../controllers/gameControllers")
+const express = require("express");
+const router = express.Router();
+const gameRoute = require("../controllers/gameControllers");
 
 router.post("/register", gameRoute.registrer_game_post)
-
 
 router.post("/:id", gameRoute.game_delete)
 
 //router.put(":/id", gameRoute.update_content)
 
-module.exports = router
+module.exports = router;

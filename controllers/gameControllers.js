@@ -7,17 +7,13 @@ const handleError = handleGameError
 const registrer_game_post = async (req, res) => {
   const { link, name, description, user } = req.body;
   try {
-    console.log("User: ",user)
-    const newGame = new games({
-      link: link,
-      Name: name,
-      Description: description,
-     createdBy: user
-    });
-    const success = await newGame.save();
+    await games.newMake(req.body)
+    console.log("Data: ",req.body)
+    
     console.log("Game registered");
-    res.status(200).json({success})
+    res.status(200).json({success:true})
   } catch (err) {
+    console.log(err)
     const error = handleError(err);
     console.log(error);
     res.status(301).json({ error });

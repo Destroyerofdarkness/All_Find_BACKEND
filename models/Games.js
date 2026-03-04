@@ -1,28 +1,46 @@
-
-
-const mongoose = require("mongoose")
-const {Schema, model} = mongoose
+const mongoose = require("mongoose");
+const validator = require("validator");
+const { Schema, model } = mongoose;
 
 const gameSchema = new Schema({
-    link: {
+  link: {
     type: String,
-    required: [true, "Enter a valid link"]
+    required: [true, "Enter a valid link"],
+    validate: {
+      validator: (value) => {
+        return validator.isURL(value, {
+          protocols: ["http", "https", "ftp"],
+          require_protocol: true,
+        });
+      },
+      message: "The Provided Link is not valid..",
     },
-    Name: {
+  },
+  Name: {
     type: String,
     unique: true,
     required: [true, "Enter a valid name"],
-    trim: true
-    },
-    Description: {type: String,
-    required: [true, "Enter a valid description"]
-    },
-    createdBy: {
-        type: String,
-        required: true
-    }
-})
+  },
+  Description: { type: String, required: [true, "Enter a valid description"] },
+  createdBy: {
+    type: String,
+    required: true,
+  },
+});
 
-const game = model("games", gameSchema)
 
-module.exports = game
+gameSchema.statics.newMake = async(body)=>{
+    const newGame = new game({
+      link: body.link,
+      Name: body.name,
+      Description: body.description,
+     createdBy: body.user
+    });
+     await newGame.save();
+     return;
+}
+
+
+const game = model("games", gameSchema);
+
+module.exports = game;
