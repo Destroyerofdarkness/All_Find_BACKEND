@@ -4,8 +4,8 @@ const {handleAnimeError} = require("../handlers/errorHandler.js")
 const handleError = handleAnimeError
 
 const anime_make = async (req, res) => {
-  const { link, name, episodes, description, user } = req.body;
-  console.log("User: ",user)
+  const {user} = req.body;
+  console.log("User registering anime: ",user)
   try {
     await anime.newMake(req.body)
     console.log("Anime registered succesfully");

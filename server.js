@@ -1,3 +1,4 @@
+//Required Modules
 const express = require("express");
 
 const path = require("path");
@@ -10,6 +11,8 @@ const app = express();
 
 const cors = require("cors");
 
+
+//Routes
 const gameRoute = require("./routes/game.js");
 
 const animeRoute = require("./routes/anime.js");
@@ -18,6 +21,8 @@ const authRoute = require("./routes/auth.js")
 
 const mainRoute = require("./routes/main.js")
 
+
+//Options conf
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -27,12 +32,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: process.env.HOST,
     methods: ["GET","POST", "DELETE","PUT"],
     allowedHeaders: ["Content-Type","Authorization"]
 }))
 
-
+//Used Routers
 app.use("/home/anime", animeRoute);
 
 app.use("/home/game", gameRoute);
@@ -46,6 +51,8 @@ app.use((req, res) =>{
 });
 
 
+
+//Server start and DB connection
 app.listen(process.env.PORT,"0.0.0.0", async()=>{
 await mongoose.connect(process.env.dbURI)
 .then((result)=>{
