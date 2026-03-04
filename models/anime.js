@@ -38,6 +38,7 @@ aniSchema.statics.newMake = async(body)=>{
     const newAnime = new anime({
       link: body.link,
       Name: body.name,
+      Episodes:body.episodes,
       Description: body.description,
       createdBy: body.user
     });

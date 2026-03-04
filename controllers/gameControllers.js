@@ -5,8 +5,11 @@ const handleError = handleGameError
 
 
 const registrer_game_post = async (req, res) => {
-  const { link, name, description, user } = req.body;
+  const {user } = req.body;
   try {
+    console.log("User creating game:",user)
+    console.log("Info:",req.body)
+    console.log(req.body)
     await games.newMake(req.body)
     console.log("Data: ",req.body)
     

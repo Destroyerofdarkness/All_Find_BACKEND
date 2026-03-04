@@ -38,9 +38,9 @@ app.use(cors({
 }))
 
 //Used Routers
-app.use("/home/anime", animeRoute);
+app.use("/anime", animeRoute);
 
-app.use("/home/game", gameRoute);
+app.use("/game", gameRoute);
 
 app.use(authRoute)
 

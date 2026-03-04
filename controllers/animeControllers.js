@@ -6,10 +6,11 @@ const handleError = handleAnimeError
 const anime_make = async (req, res) => {
   const {user} = req.body;
   console.log("User registering anime: ",user)
+  console.log("Info:",req.body)
   try {
     await anime.newMake(req.body)
     console.log("Anime registered succesfully");
-    res.status(200).json({success})
+    res.status(200).json({success:true})
   } catch (err) {
     const error = handleError(err);
     console.log(error);
@@ -18,15 +19,15 @@ const anime_make = async (req, res) => {
 };
 
 const anime_page_delete = async (req, res) => {
-  const id = req.params.id;
+  const {animeId} = req.body
   try{
     const result = await anime
-    .findByIdAndDelete(id)
+    .findByIdAndDelete(animeId)
     console.log("DELETED", result);
-      res.redirect("/home");
+      res.status(200).json({success:true})
   }catch(err){
     console.log(err)
-    res.status(301).send(err)
+    res.status(400)
   }  
 };
 
