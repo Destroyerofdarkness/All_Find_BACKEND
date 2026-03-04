@@ -40,7 +40,28 @@ const sign_up = async(req,res)=>{
     }
 }
 
+const sendBackUser = async(req,res)=>{
+    const token = req.params.token
+    try{
+        await jwt.verify(token, process.env.secret, async(err, decodedToken)=>{
+            if(err){
+                console.log("err:",err);
+                res.status(400).json({success:false})
+            }else{
+                console.log(decodedToken)
+                const user = await User.findById(decodedToken.id)
+                console.log(user)
+                res.status(201).json({success:true, user:user})
+            }
+        })
+    }catch(err){
+        console.log(err);
+        res.status(500)
+    }
+}
+
 module.exports = {
     sign_in,
     sign_up,
+    sendBackUser
 }
