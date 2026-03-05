@@ -23,34 +23,18 @@ const registrer_game_post = async (req, res) => {
   }
 };
 
-// Delete and go to game page
-const game_delete = async(req, res) => {
-  const id = req.params.id;
-  console.log(req.body, "REQ DELETE");
-    try{
-      const result = await games.findByIdAndDelete(id)
-      console.log("Deleted", result);
-      res.redirect("/home");
-    }catch(err){
-      console.log(err);
-    }
-};
-const update_content = async (req, res) => {
+const delete_game = async(req,res)=>{
+  const {gameId} =req.body
   try {
-    const id = req.params.id;
-    const { description } = req.body;
-    await games.findByIdAndUpdate(
-      { id: id },
-      { $set: { description: description } },
-      { new: true }
-    );
-  } catch (error) {
-    console.log(error);
+    await games.findByIdAndDelete(gameId)
+    res.status(200).json({success:true})
+  } catch (err) {
+    console.log(err)
+    res.status(500)
   }
-};
+}
 
 module.exports = {
-  game_delete,
   registrer_game_post,
-  update_content,
+  delete_game
 };
