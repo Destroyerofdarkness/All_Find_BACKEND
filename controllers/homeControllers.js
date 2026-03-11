@@ -27,13 +27,13 @@ const find_result = async(req,res)=>{
 }
 
 
-const render_profile = async(req,res, next)=>{
+const send_profile_info = async(req,res, next)=>{
     const username = req.params.name
     try{
         const userInfo = await findUsersCreations(username)
-        console.log(userInfo)
+        console.log("Userinfo:",userInfo)
 
-       res.render("profile", {name:`${username} - Profile`, games: userInfo.Games, anime: userInfo.Anime})
+       res.status(200).json({userInfo, user: username})
     }catch(err){
         console.log(err)
         res.status(500).send({err})
@@ -44,6 +44,6 @@ const render_profile = async(req,res, next)=>{
 
 module.exports = {
     find_result,
-    render_profile,
-    get_all_content
+    send_profile_info,
+    get_all_content,
 }
