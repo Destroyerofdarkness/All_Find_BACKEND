@@ -4,11 +4,11 @@ const { handleAnimeError } = require("../handlers/errorHandler.js");
 const handleError = handleAnimeError;
 
 const anime_make = async (req, res) => {
-  const { user } = req.body;
+  const { user } = req.body.BODY;
   console.log("User registering anime: ", user);
-  console.log("Info:", req.body);
+  console.log("Info:", req.body.BODY);
   try {
-   const name = await anime.newMake(req.body);
+   const name = await anime.newMake(req.body.BODY);
     console.log("Anime registered succesfully");
     res
       .status(200)
@@ -23,6 +23,7 @@ const anime_make = async (req, res) => {
       .status(400)
       .json({
         error,
+        success: false,
         message:
           "The anime couldn't be registered cause criterias weren't met!!",
       });

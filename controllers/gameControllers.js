@@ -3,11 +3,11 @@ const { handleGameError } = require("../handlers/errorHandler.js");
 const handleError = handleGameError;
 
 const registrer_game_post = async (req, res) => {
-  const { user } = req.body;
+  const { user } = req.body.BODY;
   try {
     console.log("User creating game:", user);
     console.log("Info:", req.body);
-    const name = await games.newMake(req.body);
+    const name = await games.newMake(req.body.BODY);
     console.log("Game registered");
     res.status(200).json({
       success: true,
@@ -20,6 +20,7 @@ const registrer_game_post = async (req, res) => {
     console.log(error);
     res.status(400).json({
       error,
+      success: false,
       message: "Failed to register the game and save it in the database!!",
     });
   }
