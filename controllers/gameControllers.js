@@ -1,40 +1,49 @@
 const games = require("../models/Games");
-const {handleGameError} = require("../handlers/errorHandler.js");
-const handleError = handleGameError
-
-
+const { handleGameError } = require("../handlers/errorHandler.js");
+const handleError = handleGameError;
 
 const registrer_game_post = async (req, res) => {
-  const {user } = req.body;
+  const { user } = req.body;
   try {
-    console.log("User creating game:",user)
-    console.log("Info:",req.body)
-    console.log(req.body)
-    await games.newMake(req.body)
-    console.log("Data: ",req.body)
-    
+    console.log("User creating game:", user);
+    console.log("Info:", req.body);
+    const name = await games.newMake(req.body);
     console.log("Game registered");
-    res.status(200).json({success:true})
+    res.status(200).json({
+      success: true,
+      newGame: name,
+      message: "Game registered and saved in the database!!",
+    });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     const error = handleError(err);
     console.log(error);
-    res.status(301).json({ error });
+    res.status(400).json({
+      error,
+      message: "Failed to register the game and save it in the database!!",
+    });
   }
 };
 
-const delete_game = async(req,res)=>{
-  const {gameId} =req.body
+const delete_game = async (req, res) => {
+  const { gameId } = req.body;
   try {
-    await games.findByIdAndDelete(gameId)
-    res.status(200).json({success:true})
+    await games.findByIdAndDelete(gameId);
+    res
+      .status(200)
+      .json({ success: true, message: `Game with ID: ${gameId} deleted!!` });
   } catch (err) {
-    console.log(err)
-    res.status(500)
+    console.log(err);
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: `Failed to delete game with ID: ${gameId}`,
+      });
   }
-}
+};
 
 module.exports = {
   registrer_game_post,
-  delete_game
+  delete_game,
 };
