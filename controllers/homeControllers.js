@@ -12,6 +12,7 @@ const get_all_content = async (req, res) => {
     const anime = await animes.find();
     res.status(200).json({
       message: "Got all games and anime from the database",
+      success:true,
       games: game,
       anime: anime,
       length: anime.length + game.length,
@@ -20,7 +21,7 @@ const get_all_content = async (req, res) => {
     console.log(err);
     res
       .status(500)
-      .json({ err, message: "Failed to get all info fom the database!" });
+      .json({ err, success:false, message: "Failed to get all info fom the database!" });
   }
 };
 
@@ -29,12 +30,12 @@ const find_result = async (req, res) => {
   try {
     const content = await findContent(id);
     console.log("content:", content);
-    res.status(200).json({ content, message: "Found result!!" });
+    res.status(200).json({ content, success:true, message: "Found result!!" });
   } catch (err) {
     console.log(err);
     res
       .status(500)
-      .json({ err, message: "Failed to find Result of the search!!" });
+      .json({ err, success:false, message: "Failed to find Result of the search!!" });
   }
 };
 
@@ -44,10 +45,10 @@ const send_profile_info = async (req, res, next) => {
     const userInfo = await findUsersCreations(username);
     console.log("Userinfo:", userInfo);
 
-    res.status(200).json({ userInfo, user: username });
+    res.status(200).json({ userInfo, user: username, success:true, message: `Found info of the user: ${username}` });
   } catch (err) {
     console.log(err);
-    res.status(500).send({ err });
+    res.status(500).json({ err, success:false, message: `Failed to find info of the user: ${username}` });
   }
 };
 
