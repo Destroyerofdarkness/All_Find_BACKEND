@@ -8,47 +8,39 @@ const anime_make = async (req, res) => {
   console.log("User registering anime: ", user);
   console.log("Info:", req.body.BODY);
   try {
-   const name = await anime.newMake(req.body.BODY);
+    const name = await anime.newMake(req.body.BODY);
     console.log("Anime registered succesfully");
-    res
-      .status(200)
-      .json({ 
-        success: true, 
-        newAnime: name,
-        message: "Anime registered succesfully!!" });
+    res.status(200).json({
+      success: true,
+      newAnime: name,
+      message: "Anime registered succesfully!!",
+    });
   } catch (err) {
     const error = handleError(err);
     console.log(error);
-    res
-      .status(400)
-      .json({
-        error,
-        success: false,
-        message:
-          "The anime couldn't be registered cause criterias weren't met!!",
-      });
+    res.status(400).json({
+      error,
+      success: false,
+      message: "The anime couldn't be registered cause criterias weren't met!!",
+    });
   }
 };
 
 const anime_page_delete = async (req, res) => {
-  const { animeId } = req.body;
+  const animeId = req.body.BODY;
   try {
     const result = await anime.findByIdAndDelete(animeId);
-    console.log("DELETED", result);
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: `Deleted anime with the ID: ${animeId} `,
-      });
+    console.log("DELETED: ", result);
+    res.status(200).json({
+      success: true,
+      message: `Deleted anime with the ID: ${animeId} `,
+    });
   } catch (err) {
     console.log(err);
-    res
-      .status(400)
-      .json({
-        success: false,
-        message: `Failed to delete anime with the ID: ${animeId}`,
-      });
+    res.status(400).json({
+      success: false,
+      message: `Failed to delete anime with the ID: ${animeId}`,
+    });
   }
 };
 

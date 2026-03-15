@@ -27,8 +27,9 @@ const registrer_game_post = async (req, res) => {
 };
 
 const delete_game = async (req, res) => {
-  const { gameId } = req.body;
+  const  gameId  = req.body.BODY;
   try {
+    console.log("Deleting game with ID:", gameId)
     await games.findByIdAndDelete(gameId);
     res
       .status(200)
