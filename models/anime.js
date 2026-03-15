@@ -43,7 +43,7 @@ aniSchema.statics.newMake = async(body)=>{
       createdBy: body.user
     });
      await newAnime.save();
-     return;
+     return newAnime.Name;
 }
 
 

@@ -36,8 +36,8 @@ gameSchema.statics.newMake = async(body)=>{
       Description: body.description,
      createdBy: body.user
     });
-     await newGame.save();
-     return;
+    await newGame.save();
+     return newGame.Name;
 }
 
 
