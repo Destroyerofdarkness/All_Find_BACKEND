@@ -39,21 +39,35 @@ const find_result = async (req, res) => {
   }
 };
 
-const send_profile_info = async (req, res, next) => {
+const send_profile_info = async (req, res) => {
   const username = req.params.name;
   try {
+    const user = await User.findOne({user:username})
     const userInfo = await findUsersCreations(username);
     console.log("Userinfo:", userInfo);
 
-    res.status(200).json({ userInfo, user: username, success:true, message: `Found info of the user: ${username}` });
+    res.status(200).json({ userInfo, user: user, success:true, message: `Found info of the user: ${username}` });
   } catch (err) {
     console.log(err);
     res.status(500).json({ err, success:false, message: `Failed to find info of the user: ${username}` });
   }
 };
 
+const update_user_bio = async(req,res)=>{
+  const {user} = req.body
+  try {
+    console.log(req.body)
+    await User.updateBio(req.body)
+    res.status(200).json({success:true, message: `Updated the bio of the user with an ID: ${user}`})
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({err, success: false, message: `Failed to Update The Info of a User With ID: ${user}`})
+  }
+}
+
 module.exports = {
   find_result,
   send_profile_info,
   get_all_content,
+  update_user_bio
 };
