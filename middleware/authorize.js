@@ -7,7 +7,7 @@ const authorize = async(req,res, next)=>{
         const hash = crypto.createHash("sha256").update(authHeader).digest('hex');
         const foundkey = await Key.findOne({key:hash})
         console.log(foundkey)
-        if(!foundkey.key){
+        if(!foundkey){
             throw Error("Provided key doesn't exist");
         }
         console.log("Found the Key")
