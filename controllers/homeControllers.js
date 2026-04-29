@@ -21,7 +21,7 @@ const get_all_content = async (req, res) => {
     console.log(err);
     res
       .status(500)
-      .json({ err, success:false, message: "Failed to get all info fom the database!" });
+      .json({ err, success:false, message: "Failed to get all info from the database!" });
   }
 };
 
