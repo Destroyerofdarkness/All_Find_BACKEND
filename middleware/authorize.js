@@ -1,7 +1,6 @@
 const crypto = require("crypto");
 const Key = require("../models/Key")
 
-
 const authorize = async(req,res, next)=>{
     const authHeader = req.headers.authorization
     try {
