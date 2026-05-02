@@ -5,7 +5,7 @@ const authorize = async(req,res, next)=>{
     const authHeader = req.headers.authorization
     try {
         const hash = crypto.createHash("sha256").update(authHeader).digest('hex');
-        const key = await Key.find({key:hash})
+        const key = await Key.findOne({key:hash})
         if(!key){
             throw Error("Provided key doesn't exist")
         }
