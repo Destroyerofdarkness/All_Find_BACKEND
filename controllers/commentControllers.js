@@ -46,4 +46,16 @@ const send_view_comments = async (req, res) => {
   }
 };
 
-module.exports = { comment_register, send_view_comments };
+
+const delete_view_comment = async(req,res)=>{
+  const {id} = req.body.BODY
+  try {
+    await Comment.findByIdAndDelete(id);
+    res.status(201).json({success:true, message:"Succesfully deleted the comment !!"})
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({err,success:false, message: "Unable to delete the comment!!"})
+  }
+}
+
+module.exports = { comment_register, send_view_comments, delete_view_comment };

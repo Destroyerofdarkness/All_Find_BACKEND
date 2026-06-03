@@ -9,8 +9,7 @@ const report_create = async(req,res)=>{
         res.status(200).json({success:true, message: "Succesfully published the report for the view!!"})
     } catch (err) {
         console.log(err);
-        const error = handlerReportError(err);
-        res.status(400).json({error, success:false, message: "Couldn't create the report because of errors!!"})
+        res.status(400).json({err, success:false, message: "Couldn't create the report because of errors!!"})
     }
 }
 

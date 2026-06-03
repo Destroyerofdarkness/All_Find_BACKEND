@@ -1,4 +1,4 @@
-const {Schema, model, connection} = require("mongoose")
+const {Schema, model} = require("mongoose")
 
 
 const reportSchema = new Schema({

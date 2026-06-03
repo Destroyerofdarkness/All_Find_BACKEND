@@ -22,6 +22,8 @@ const mainRoute = require("./routes/main.js");
 
 const commentRoute = require("./routes/comment.js");
 
+const reportRoute = require("./routes/report.js");
+
 //Options conf
 app.set("view engine", "ejs");
 
@@ -45,6 +47,8 @@ app.use("/anime", animeRoute);
 app.use("/game", gameRoute);
 
 app.use("/comment", commentRoute);
+
+app.use("/report", reportRoute);
 
 app.use(authRoute);
 
