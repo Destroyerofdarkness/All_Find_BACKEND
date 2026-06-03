@@ -51,4 +51,16 @@ const handleAuthError = (err) => {
   return errors;
 };
 
-module.exports = { handleAnimeError, handleGameError, handleAuthError };
+
+const handleReportError = (err)=>{
+
+  const errors = {description:""};
+
+  
+  Object.values(err.errors).forEach(({properties})=>{
+    errors[properties.path] = properties.message;
+  })
+
+  return errors;
+}
+module.exports = { handleAnimeError, handleGameError, handleAuthError,handleReportError };

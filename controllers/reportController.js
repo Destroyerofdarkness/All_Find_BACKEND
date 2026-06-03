@@ -1,5 +1,5 @@
 const Report = require("../models/Report");
-const {handlerReportError} = require("../handlers/errorHandler")
+const {handleReportError} = require("../handlers/errorHandler")
 
 
 const report_create = async(req,res)=>{
@@ -9,7 +9,8 @@ const report_create = async(req,res)=>{
         res.status(200).json({success:true, message: "Succesfully published the report for the view!!"})
     } catch (err) {
         console.log(err);
-        res.status(400).json({err, success:false, message: "Couldn't create the report because of errors!!"})
+        const errors = handleReportError(err);
+        res.status(400).json({errors, success:false, message: "Couldn't create the report because of errors!!"})
     }
 }
 
