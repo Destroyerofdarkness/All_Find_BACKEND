@@ -15,4 +15,17 @@ const report_create = async(req,res)=>{
 }
 
 
-module.exports = {report_create}
+const send_all_reports = async(req,res)=>{
+    try {
+        const reports = await Report.find();
+        res.status(200).json({reports, success:true, message:"Succesfully got all the reports from the database"});
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({err, success:false, message: "Couldn't get all the reports because of Internal Server Error!!"})
+    }
+}
+
+module.exports = {
+    report_create,
+    send_all_reports
+}

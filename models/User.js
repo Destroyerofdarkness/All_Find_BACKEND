@@ -17,7 +17,13 @@ const userSchema = new Schema({
     required: true,
     default: "Not anything to display",
   },
+  role:{
+    type:String,
+    required:true,
+    default: "Member"
+  }
 });
+
 userSchema.pre("save", async function () {
   try {
     this.pass = await argon2.hash(this.pass);
